@@ -1,0 +1,29 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% load myfilter %}
+{% block content %}
+    <div class="container">
+        <h1 class="alert-danger text-center p-3">Candidate Detail</h1>
+        <div class="row">
+         <div class="col-sm-10 shadow p-5 offset-sm-1">
+          <h3 class="text-center"><u>Resume</u></h3>
+          <p class="float-end">Applicantion No: {{resume.id}}</p>
+          <img src="{{resume.profile_image.url}}" alt="" class="img-fluid img-thumbnail float-end mt-4" width="150" height="150">
+          <p>Name: {{resume.name}}</p>
+          <p>Date of Birth: {{resume.dob}}</p>
+          <p>Gender: {{resume.gender}}</p>
+          <p>Address: {{resume.locality}}, {{resume.city}}, {{resume.state}} - {{resume.pin}}</p>
+          <p>Mobile No: {{resume.mobile}}</p>
+          <p>Email ID: {{resume.email}}</p>
+          <p>Preferred Job Cities: {{resume.job_city|remove_special:"[]'"}}</p>
+          <p>Attachment: <a href="{{resume.my_file.url}}">Download File</a></p> 
+         <div class="text-center">
+          <a href="/" class="btn btn-danger">Home</a>
+          <a href="{% url 'update_form' resume.id %}" class="btn btn-danger">Edit</a>
+          <a href="{% url 'delete_form' resume.id %}" class="btn btn-danger">Delete</a>
+         </div>
+         </div>
+        </div>
+       </div>
+    {% endblock content %}
+</html>

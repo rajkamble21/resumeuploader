@@ -1,0 +1,12 @@
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <form class="d-flex">
+        {% if request.user.is_authenticated %}
+        <button class="btn btn-outline-success" type="button"><a href="{% url 'logout' %}">logout</a></button>
+        {% else %}
+        <button class="btn btn-outline-success" type="button"><a href="{% url 'signup_form' %}">SignUp</a></button>
+        <button class="btn btn-outline-success" type="button"><a href="{% url 'login' %}">Login</a></button>
+        {% endif %}
+      </form>
+    </div>
+</nav>
